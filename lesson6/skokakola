@@ -1,0 +1,56 @@
+from random import randint
+import time
+n=randint(15,25)
+print("Всего",n,"предметов")
+
+k=randint(3,5)
+print("Брать можно",k,"предметов")
+
+ocher = randint (1,2)
+
+if ocher==1:
+    time.sleep (2)
+    print("Начинаете вы")
+else:
+    time.sleep (2)
+    print("Начинает коля")
+
+while True:
+    time.sleep (2)
+
+    if ocher == 1:
+        while True :
+            skoka=int(input("Скока брать буш?ммм? "))
+            if skoka>k:
+                print("Введи нормальное число")          
+            else:
+                break
+        time.sleep (2)
+        n=n-skoka
+        
+    else:
+        if n>=k:
+            skokakola=randint(1,k)
+        else:
+            skokakola=randint(1,n)
+        time.sleep (2)
+        print("Колямба взял", skokakola,"предмета")
+        time.sleep (2)
+        n=n-skokakola
+
+    print('Кол-во предметов изменилоь на', n)
+
+    if n!=0:    
+
+        if ocher==1:
+            ocher=2
+        else:
+            ocher=1
+    else:
+        
+        if ocher==2:
+            print("Колямба в очередной раз подтвердил свой статус лоха,проиграв тебе")
+        else:
+            print("Колямба конечно лох,но ты хуже, раз проиграл ему")
+
+        break
