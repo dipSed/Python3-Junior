@@ -1,0 +1,5 @@
+st=input("введите слово ")
+n=input("какую строку зааменить")
+m=input("на что")
+k=st.replace(n,m)
+print (k)
