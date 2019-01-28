@@ -1,0 +1,10 @@
+text=input("Vvedi tekst chmo")
+a={}
+for c in text:
+    if c in a:
+        a[c]=a[c]+1
+    else:
+        a[c]=1
+for k in a:
+    print(k,a[k])
+
