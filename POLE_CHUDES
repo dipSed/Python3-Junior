@@ -1,0 +1,30 @@
+import random
+def upclue(geslet,sec,clue):
+    index=0
+    while index<len(sec):
+        if geslet==sec[index]:
+            clue[index]=geslet
+        index+=1
+lives=9
+words=["крыло","дурак","филин","пушка","время","трава"]
+sec=random.choice(words)
+clue=list("?????")
+heart=u'\u2764'
+gwc=False
+while lives>0:
+    print("ЭТО ПОЛЕ ЧУДЕС")
+    print(clue)
+    print(" У ТЕБЯ ,ДЭБИЛА,"+heart*lives+" ХП")
+    guess=input("А ТЕПЕРЬ КАЧЕРЫШКА ПОПРОБУЙ УГАДАТЬ БУКАВКУ ИЛИ ЦЕЛОЕ СЛОВО: ")
+    if guess==sec:
+        gwc=True
+        break
+    if guess in sec:
+        upclue(guess,sec,clue)
+    else:
+        print("ПАПХАПХАПХАПХАПХАПХАПХАПХ ТЫ ЛОХ ПОТЕРЯЛ 1 ХП")
+        lives-=1
+if gwc:
+    print("ты победил , но всеравно ты качерыжка слово -"+sec)
+else:
+    print("ППХАХПХПАХАПХАПХАПХПАХПАХПАХАХПХАПХАПХАПХ ТЫ НАСТОЛЬНО ПРИДУРОШНЫЙ ЗАТУПОК ЧТО ДАЖЕ С 9 ПОПЫТОК НЕ УГАДАЛ СЛОВО- "+sec)
