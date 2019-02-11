@@ -1,18 +1,34 @@
 import random
-def upclue(geslet,sec,clue):
+print("ЭТО ПОЛЕ ЧУДЕС")
+lvl=int(input("ВЫБЕРИ УРОВЕНЬ СЛОЖНОСТИ НЮНЯ:1.я дэбил;2.я умнее хлебушка;3.я умнее дотера;4.Я БОХ ЭТОГО МИРА"))
+if lvl==1:
+    lives=15
+elif lvl==2:
+    lives=8
+elif lvl==3:
+    lives=4
+elif lvl==5:
+    lives=1
+elif lvl>4:
+    print("ТАКОЙ СЛОЖНОСТИ НЕТ,ТЫ ДЭБИЛ ТОЧНО")
+    lives=15
+words=["крыло","дурак","филин","пушка","время","трава","рябчик","ваниль","жиртрест","капуста","лежанка","велосипед"]
+sec=random.choice(words)
+clue=[]
+for i in range(len(sec)):
+    clue.append("?")
+heart=u'\u2764'
+gwc=False
+letters=len(sec)
+def upclue(geslet,sec,clue,letters):
     index=0
     while index<len(sec):
         if geslet==sec[index]:
             clue[index]=geslet
+            letters-=1
         index+=1
-lives=9
-words=["крыло","дурак","филин","пушка","время","трава"]
-sec=random.choice(words)
-clue=list("?????")
-heart=u'\u2764'
-gwc=False
+    return letters
 while lives>0:
-    print("ЭТО ПОЛЕ ЧУДЕС")
     print(clue)
     print(" У ТЕБЯ ,ДЭБИЛА,"+heart*lives+" ХП")
     guess=input("А ТЕПЕРЬ КАЧЕРЫШКА ПОПРОБУЙ УГАДАТЬ БУКАВКУ ИЛИ ЦЕЛОЕ СЛОВО: ")
@@ -20,11 +36,14 @@ while lives>0:
         gwc=True
         break
     if guess in sec:
-        upclue(guess,sec,clue)
+        letters=upclue(guess,sec,clue,letters)
     else:
         print("ПАПХАПХАПХАПХАПХАПХАПХАПХ ТЫ ЛОХ ПОТЕРЯЛ 1 ХП")
         lives-=1
+    if letters==0:
+        gwc=True
+        break
 if gwc:
     print("ты победил , но всеравно ты качерыжка слово -"+sec)
-else:
+elif letters!=0:
     print("ППХАХПХПАХАПХАПХАПХПАХПАХПАХАХПХАПХАПХАПХ ТЫ НАСТОЛЬНО ПРИДУРОШНЫЙ ЗАТУПОК ЧТО ДАЖЕ С 9 ПОПЫТОК НЕ УГАДАЛ СЛОВО- "+sec)
