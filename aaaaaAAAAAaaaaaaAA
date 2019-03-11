@@ -1,0 +1,56 @@
+from tkinter import *
+
+def Raschet(event):
+    ra=float(a.get())
+    rb=float(b.get())
+    plosh =ra*rb
+    plosh=str("{:.3f}".format(plosh))
+    pl.delete(0,END)
+    pl.insert(0,plosh)#ПРЕКРАСНО
+def Raschet2(event):
+    ra=float(a.get())
+    rb=float(b.get())
+    per =(ra+rb)*2
+    per=str("{:.3f}".format(per))
+    pl2.delete(0,END)
+    pl2.insert(0,per)#ПРЕКРАСНО
+def Vihod(event):
+    root.destroy()
+root=Tk()
+root.title("Лох")
+root.geometry("250x150")
+
+ra=StringVar()
+rb=StringVar()
+pl=StringVar()
+
+nadp=Label(root,text="введите a",font="Chilanka 10")
+a=Entry(root,width=10,textvariable=ra)
+
+nadp2=Label(root,text="введите b",font="Chilanka 10")
+b=Entry(root,width=10,textvariable=rb)
+
+nadp3=Label(root,text="Площадь прямоуг",font="Chilanka 10")
+pl=Entry(root,width=10,textvariable=pl)
+
+nadp4=Label(root,text="Периметр прямоуг.",font="Chilanka 10")
+pl2=Entry(root,width=10,textvariable=pl)
+
+kr=Button(root,text="расчетПЛ",width=10)
+kr2=Button(root,text="расчетПР",width=10)
+kv=Button(root,text="выход",width=10)
+nadp.place(x=10,y=10)
+a.place(x=150,y=10)
+nadp2.place(x=10,y=30)
+b.place(x=150,y=30)
+nadp3.place(x=10,y=50)
+pl.place(x=150,y=50)
+nadp4.place(x=10,y=70)
+pl2.place(x=150,y=70)
+kr.place(x=10,y=90)
+kr2.place(x=130,y=90)
+kv.place(x=70,y=120)
+kr.bind("<Button-1>",Raschet)
+kr2.bind("<Button-1>",Raschet2)
+kv.bind("<Button-1>",Vihod)
+root.mainloop()
