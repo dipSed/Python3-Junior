@@ -1,0 +1,62 @@
+from tkinter import *
+from math import sqrt
+
+def raschet(event):
+    a1 = float(va.get())
+    b1 = float(vb.get())
+    c1 = float(vc.get())
+
+    p1 = 0.5*(a1+b1+c1)
+    s1 = sqrt(p1*(p1-a1)*(p1-b1)*(p1-c1))
+    P = p1*2
+
+    p = str("{:.3f}".format(P))
+    s = str("{:.3f}".format(s1))
+    
+
+    pv.delete(0,END)
+    pv.insert(0,P)
+    sv.delete(0,END)
+    sv.insert(0,s)
+
+def exite(event):
+    root.destroy()
+    	
+root=Tk()
+root.title('Площадь треугольника')
+root.geometry('250x150')
+
+
+P = StringVar()
+s = StringVar()
+aa = StringVar()
+bb = StringVar()
+cc = StringVar()
+
+a = Label(root,text='Введите а', font = 'Arial 10')
+va = Entry(root, width = 10, textvariable = aa)
+b = Label(root,text='Введите b', font = 'Arial 10')
+vb = Entry(root, width = 10, textvariable = bb)
+c = Label(root,text='Введите c', font = 'Arial 10')
+vc = Entry(root, width = 10, textvariable = cc)
+pr = Label(root,width =10,text = 'Периметр',font = 'Arial 10')
+pv = Entry(root, width = 10, textvariable = P)
+st = Label(root,width =10,text = 'Площадь',font = 'Arial 10')
+sv = Entry(root, width = 10, textvariable = s)
+knopka_raschet = Button(root, text = 'Расчет', width = 10)
+knopka_vihod = Button(root, text = 'Выход', width = 10)
+a.place(x=10,y=10)
+va.place(x=130,y=10)
+b.place(x=10,y=30)
+vb.place(x=130,y=30)
+c.place(x=10,y=50)
+vc.place(x=130,y=50)
+pr.place(x=10,y=70)
+pv.place(x=130,y=70)
+st.place(x=10,y=90)
+sv.place(x=130,y=90)
+knopka_raschet.place(x=10,y=120)
+knopka_vihod.place(x=130,y=120)
+knopka_raschet.bind('<Button-1>', raschet)
+knopka_vihod.bind('<Button-1>', exite)
+root.mainloop()
