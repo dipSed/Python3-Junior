@@ -1,0 +1,60 @@
+from tkinter import *
+
+def calulate(event):
+    n1=float(aa.get())
+    n2=float(bb.get())
+    if calc.get()==1:
+        otvet=n1+n2
+    elif calc.get()==2:
+        otvet=n1*n2
+    elif calc.get()==3:
+        otvet=n1-n2
+    elif calc.get()==4:
+        otvet=n1/n2
+    otvet=str("{:.3f}".format(otvet))
+    vivodc.delete(0,END)
+    vivodc.insert(0,otvet)
+
+def exite(event):
+    root.destroy()
+    
+root=Tk()
+root.title("LOH")
+root.geometry("500x400")
+
+aa=StringVar()
+bb=StringVar()
+cc=StringVar()
+calc=IntVar()
+calc.set(1)
+
+a=Label(root,text="Перв.Число",font="Arial 15")
+vvoda=Entry(root,textvariable=aa)
+b=Label(root,text="Втор.Число",font="Arial 15")
+vvodb=Entry(root,textvariable=bb)
+c=Label(root,text="Итог",font="Arial 15")
+vivodc=Entry(root,textvariable=cc)
+resh=Button(root,text="Решение",font="Arial 15")
+ex=Button(root,text="Выход",font="Arial 15")
+pro=Radiobutton(root,text="Произведение",font="Arial 15",value=2,variable=calc)
+soch=Radiobutton(root,text="Сочитание",font="Arial 15",value=1,variable=calc)
+vich=Radiobutton(root,text="Вычитание",font="Arial 15",value=3,variable=calc)
+ch=Radiobutton(root,text="Часное",font="Arial 15",value=4,variable=calc)
+
+a.place(x=30,y=30)
+vvoda.place(x=170,y=35)
+b.place(x=30,y=60)
+vvodb.place(x=170,y=65)
+c.place(x=30,y=120)
+vivodc.place(x=120,y=125)
+resh.place(x=200,y=300)
+ex.place(x=330,y=300)
+pro.place(x=250,y=180)
+soch.place(x=100,y=180)
+vich.place(x=250,y=220)
+ch.place(x=100,y=220)
+
+ex.bind('<Button-1>', exite)
+resh.bind('<Button-1>', calulate)
+
+root.mainloop()
