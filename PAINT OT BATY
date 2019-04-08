@@ -1,0 +1,46 @@
+from tkinter import *
+canvas_width=1000
+canvas_hight=600
+brush_size=50
+color="white"
+
+def paint (event):
+    global brush_size
+    global color
+    x1=event.x-brush_size
+    x2=event.x+brush_size
+    y1=event.y-brush_size
+    y2=event.y+brush_size
+    c.create_oval(x1,y1,x2,y2,fill=color,outline=color)
+
+def bs_change (new_size):
+    global brush_size
+    brush_size=new_size
+def color_change(new_color):
+    global color
+    color=new_color
+def bg_change (new_color):
+    c.configure(background=new_color)
+
+
+root=Tk()
+root.title("VlaInt")
+per=IntVar()
+per.set(10)
+c=Canvas(root,width=canvas_width,height=canvas_hight,bg="pink")
+blue_button=Button(text="Синий",width=10,command=lambda:color_change("blue"))
+red_button=Button(text="Желтый",width=10,command=lambda:color_change("yellow"))
+five_button=Button(text="5",width=10,command=lambda:bs_change(5))
+fiventeen_button=Button(text="50",width=10,command=lambda:bs_change(50))
+bg_blue=Radiobutton(text="Красный",variable=per,value=2,command=lambda:bg_change("red"))
+clear=Button(text="УДОЛИ",width=10,command=lambda:c.delete("all"))
+
+clear.grid(row=0,column=4)
+five_button.grid(row=0,column=2)
+fiventeen_button.grid(row=1,column=2)
+blue_button.grid(row=1,column=3)
+red_button.grid(row=0,column=3)
+bg_blue.grid(row=2,column=2)
+c.grid(row=3,column=0,columnspan=9,padx=5,pady=5,sticky=E+W+S+N)
+c.bind("<B1-Motion>",paint)
+root.mainloop()
