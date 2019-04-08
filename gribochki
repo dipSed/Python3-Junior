@@ -1,0 +1,14 @@
+from tkinter import *
+import random
+colors=["violet","pink","green","red","fuchsia","green","maroon","blue","yellow","brown","black","white","chartreuse","lime","orange","cyan"]
+root=Tk()
+c=Canvas(root,width=800,height=600,bg="black")
+c.pack()
+while True:
+    x1=random.randint(0,1000)
+    y1=random.randint(0,1000)
+    d=random.randint(0,1000/5)
+    c.create_oval(x1,y1,x1+d,y1+d,fill=random.choice(colors),outline=random.choice(colors),width=random.randint(1,20))
+    c.create_rectangle(x1,y1,x1+2*d,y1+2*d,fill=random.choice(colors),outline=random.choice(colors),width=random.randint(1,20))
+
+    root.update()
